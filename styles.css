@@ -25,3 +25,7 @@ body {
   background-color: lightblue;
   border: solid 1px black;
 }
+
+.grid-item-permahover {
+  background-color: lightcoral;
+}
