@@ -10,8 +10,13 @@ let gridContainer;
 
 // Prompt the user to choose a grid size.
 gridSizeButton.addEventListener('click', () => {
-  gridSize = prompt('Choose a grid size! Max size is 100x100.');
+  gridSize = prompt('Enter a number from 0-100.');
   gridSize = Number(gridSize);
+  // Checks gridSize value is valid.
+  while (gridSize > 100 || gridSize <= 0 || isNaN(gridSize)) {
+    gridSize = prompt('Enter a number from 0-100.');
+    gridSize = Number(gridSize);
+  }
   totalGridItems = gridSize * gridSize;
 
   // Remove and regenerate grid with user specified size.
