@@ -6,23 +6,34 @@ document.body.appendChild(gridSizeButton);
 
 let gridSize = 16;
 let totalGridItems = 256;
+let gridContainer;
 
 // Prompt the user to choose a grid size.
 gridSizeButton.addEventListener('click', () => {
-  gridSize = prompt('Choose a grid size! Max size is 100x100.')
+  gridSize = prompt('Choose a grid size! Max size is 100x100.');
+  gridSize = Number(gridSize);
   totalGridItems = gridSize * gridSize;
+
+  // Remove and regenerate grid with user specified size.
+  document.body.removeChild(gridContainer);
+  generateGridContainer();
+  generateGridItems();
 });
 
-// Generate grid container.
-const gridContainer = document.createElement('div');
-gridContainer.classList.add('grid-container');
-document.body.appendChild(gridContainer);
+function generateGridContainer() {
+  gridContainer = document.createElement('div');
+  gridContainer.classList.add('grid-container');
+  document.body.appendChild(gridContainer);
+}
 
-// Generate grid elements.
-for (let i = 0; i < totalGridItems; i++) {
-  const gridItem = document.createElement('div');
-  gridItem.classList.add('grid-item');
-  gridContainer.appendChild(gridItem);
-  gridItem.addEventListener('mouseover', () => {
-  gridItem.classList.add('grid-item-permahover');
-})};
+function generateGridItems() {
+  for (let i = 0; i < totalGridItems; i++) {
+    const gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item');
+    gridContainer.appendChild(gridItem);
+    gridItem.addEventListener('mouseover', () => {
+    gridItem.classList.add('grid-item-permahover');
+})}}
+
+generateGridContainer();
+generateGridItems();
