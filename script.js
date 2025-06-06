@@ -27,13 +27,16 @@ function generateGridContainer() {
 }
 
 function generateGridItems() {
+    let gridItemSize = 800 / gridSize;
   for (let i = 0; i < totalGridItems; i++) {
-    const gridItem = document.createElement('div');
-    gridItem.classList.add('grid-item');
+    let gridItem = document.createElement('div');
+    gridItem.classList.add('grid-item', 'grid-item-size');
+    gridItem.style.flexBasis = `${gridItemSize}px`;
     gridContainer.appendChild(gridItem);
     gridItem.addEventListener('mouseover', () => {
     gridItem.classList.add('grid-item-permahover');
-})}}
+  })};
+}
 
 generateGridContainer();
 generateGridItems();

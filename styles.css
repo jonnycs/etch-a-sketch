@@ -16,14 +16,13 @@ body {
   justify-content: flex-start;
   height: 800px;
   width: 800px;
-  background-color: lightpink;
 }
 
 .grid-item {
   display: flex;
   flex: 0 0 50px;
   background-color: lightblue;
-  border: solid 1px black;
+  border: solid 1px #121212;
 }
 
 .grid-item-permahover {
