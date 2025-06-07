@@ -4,13 +4,22 @@ gridSizeButton.textContent = 'Choose Grid Size';
 gridSizeButton.classList.add('grid-size-button');
 document.body.appendChild(gridSizeButton);
 
+function changePenColor(color, gridItem) {
+  greenPenButton.addEventListener('click', () => {
+    gridItem.className = '';
+    gridItem.classList.add('grid-item', 'grid-item-size');
+    gridItem.addEventListener('mouseover', () => {
+      gridItem.classList.add(`grid-item-${color}-permahover`);
+})})};
+
+
 let gridSize = 16;
 let totalGridItems = 256;
 let gridContainer;
 
 // Prompt the user to choose a grid size.
 gridSizeButton.addEventListener('click', () => {
-  gridSize = prompt('Enter a number from 0-100.');
+  gridSize = prompt('Enter a number from 1-100.');
   gridSize = Number(gridSize);
   // Checks gridSize value is valid.
   while (gridSize > 100 || gridSize <= 0 || isNaN(gridSize)) {
@@ -39,8 +48,9 @@ function generateGridItems() {
     gridItem.style.flexBasis = `${gridItemSize}px`;
     gridContainer.appendChild(gridItem);
     gridItem.addEventListener('mouseover', () => {
-    gridItem.classList.add('grid-item-permahover');
-  })};
+      gridItem.classList.add('grid-item-red-permahover');
+  });
+}
 }
 
 generateGridContainer();
