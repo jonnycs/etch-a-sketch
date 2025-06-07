@@ -4,10 +4,24 @@ gridSizeButton.textContent = 'Choose Grid Size';
 gridSizeButton.classList.add('grid-size-button');
 document.body.appendChild(gridSizeButton);
 
-function changePenColor(color, gridItem) {
-  greenPenButton.addEventListener('click', () => {
+// Add pen color buttons.
+const redPenButton = document.createElement('button');
+redPenButton.textContent = 'Red Pen';
+document.body.appendChild(redPenButton);
+
+const greenPenButton = document.createElement('button');
+greenPenButton.textContent = 'Green Pen';
+document.body.appendChild(greenPenButton);
+
+const bluePenButton = document.createElement('button');
+bluePenButton.textContent = 'Blue Pen';
+document.body.appendChild(bluePenButton);
+
+function changePenColor(color, gridItem, colorPenButton) {
+  colorPenButton.addEventListener('click', () => {
     gridItem.className = '';
     gridItem.classList.add('grid-item', 'grid-item-size');
+
     gridItem.addEventListener('mouseover', () => {
       gridItem.classList.add(`grid-item-${color}-permahover`);
 })})};
@@ -47,10 +61,11 @@ function generateGridItems() {
     gridItem.classList.add('grid-item', 'grid-item-size');
     gridItem.style.flexBasis = `${gridItemSize}px`;
     gridContainer.appendChild(gridItem);
-    gridItem.addEventListener('mouseover', () => {
-      gridItem.classList.add('grid-item-red-permahover');
-  });
-}
+
+  changePenColor("red", gridItem, redPenButton);
+  changePenColor("green", gridItem, greenPenButton);
+  changePenColor("blue", gridItem, bluePenButton);
+  }
 }
 
 generateGridContainer();
